@@ -50,10 +50,10 @@ def t_error(t):
 lex.lex()
 
 
-def get_register_bits(bounds, register_num):
-    if not (bounds.start <= register_num <= bounds.end):
-        raise Exception("Register out of bounds.")
-    before = '{0:b}'.format(register_num - bounds.start)
+def get_register_bits(bounds, register):
+    if not (bounds.start <= ark.REGISTERS[register] <= bounds.end):
+        raise Exception("Register {} is out of bounds for this instruction.".format(register))
+    before = '{0:b}'.format(ark.REGISTERS[register] - bounds.start)
     return ("0" * (int(bounds.bits) - len(before))) + before
 
 
@@ -75,20 +75,15 @@ def p_instruction_reg(p):
 
     opcode, format_ = find_opcode(p[1], "A", "R")
     bounds = format_.operand(0)
-    register_num = ark.REGISTERS[p[2]]
-    register_bits = get_register_bits(bounds, register_num)
+    register_bits = get_register_bits(bounds, p[2])
     p[0] = assemble(opcode, register_bits)
 
 
 def p_instruction_reg_reg(p):
     'instruction : COMMAND REGISTER REGISTER'
     opcode, format_ = find_opcode(p[1], "K", "AA")
-    bounds = format_.operand(0)
-    register_num = ark.REGISTERS[p[2]]
-    register_bits1 = get_register_bits(bounds, register_num)
-    bounds = format_.operand(1)
-    register_num = ark.REGISTERS[p[3]]
-    register_bits2 = get_register_bits(bounds, register_num)
+    register_bits1 = get_register_bits(format_.operand(0), p[2])
+    register_bits2 = get_register_bits(format_.operand(1), p[3])
     p[0] = assemble(opcode, register_bits1, register_bits2)
 
 
@@ -153,8 +148,11 @@ if __name__ == "__main__":
         lines = []
         print("Reading instructions from '{}' ...".format(os.path.relpath(sys.argv[1]))),
         with open(sys.argv[1], "r") as stream:
-            for line in stream:
-                lines.append(yacc.parse(line) + " // " + line.rstrip())
+            try:
+                for i, line in enumerate(stream):
+                    lines.append(yacc.parse(line) + " // " + line.rstrip())
+            except Exception as e:
+                raise Exception("Parser error at line {}: {}".format(i + 1, e))
         print("Done!")
         if len(sys.argv) > 2:
             print("Writing machine code output to '{}' ...".format(os.path.relpath(sys.argv[2]))),
@@ -165,5 +163,5 @@ if __name__ == "__main__":
             print("Machine Code:")
             print(os.linesep.join(lines))
     except Exception as e:
-        print("Fatal Error: " + str(e))
+        print("\nFatal Error: " + str(e))
 
