@@ -16,4 +16,4 @@ boz          -5
 high         0b0000
 low          0b0111
 store        $s1
-halt
+haltLO
