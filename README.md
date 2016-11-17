@@ -25,7 +25,7 @@ Starting the ARK interpreter... (Enter CTR + C to exit)
 When the assembler is given a single argument, it reads instructions from the file at the given path and outputs the generated machine code directly to the screen.
 
 ```bash
-$ python ark/__main__.py problem17.txt
+$ python ark/__main__.py problems/problem17.txt
 Reading instructions from 'problem17.txt'...
 Machine Code:
 11000_1111 // high        0b1111
@@ -43,7 +43,7 @@ When the assembler is given two arguments, it reads instructions from the first 
 to the second.
 
 ```bash
-$ python ark/__main__.py problem17.txt
+$ python ark/__main__.py problems/problem17.txt problem17_out.txt
 Reading instructions from 'problem17.txt' ... Done!
 Writing machine code output to 'problem17_out.txt' ... Done!
 ``` 
