@@ -1,15 +1,12 @@
 # ARK-Assembler
 
-`ark` is an assembler for [ARK](https://github.com/prkumar/ARK-Processor), an instruction set architecture [we](##Authors) developed at UCSD for CSE 141L and 
-designed to complete three specific problems. The `problems*.txt` contains the ARK instructions for these problems.
-
-With a better understanding of ISA design tradeoffs now than when we were designing ARK (being that was back in early October '16), we consider it far from perfect and hope to make a few optimizations before completing the accompanying processor design.
+`ark` is an assembler for [ARK](https://github.com/prkumar/ARK-Processor), an instruction set architecture [we](##Authors) developed at UCSD for CSE 141L, in which we were tasked to design an ISA to complete three specific problems. (The `problems*.txt` files contains the ARK instructions for these problemsasd
 
 ## Usage
 
 `ark/__main__.py` contains the assembler code. The assembler has three modes, determined by the number of positional arguments given.
  
- **NOTE:** The 'ark' directory is a python package, and the `__main__.py` expects to be executed from somewhere above that directory. I.e., the assembler will not work if you run it from within `ark`.
+ **NOTE:** The `ark` directory is a python package, and the `__main__.py` expects to be executed from somewhere above that directory. In other words, the assembler will not work if you run it from within `ark`.
 
 ### Start a Read-eval-print loop (REPL)
 
@@ -62,5 +59,9 @@ Brought to you by:
 * **A**nil Jethani
 * P. **R**aj Kumar 
 * **K**evin Wong
+
+### An Aside
+
+With a better understanding of ISA design tradeoffs now than when we were designing ARK (being that was back in early October '16), we consider it far from perfect and hope to make a few optimizations before completing the accompanying processor design.
 
 
