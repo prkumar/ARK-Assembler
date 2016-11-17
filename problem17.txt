@@ -42,3 +42,4 @@ store       $s0
 high        0b0000
 low         0b0101
 store       $s2
+halt
