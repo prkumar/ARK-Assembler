@@ -1,6 +1,6 @@
-# ARK-Assembler
+# `ark`, the ARK Assembler
 
-`ark` is an assembler for [ARK](https://github.com/prkumar/ARK-Processor), an instruction set architecture [we](##Authors) developed at UCSD for CSE 141L. It was designed to complete three specific problems (the `problems*.txt` files contains the ARK instructions for these problems).
+`ark` is an assembler for [ARK](https://github.com/prkumar/ARK-Processor), an instruction set architecture [we](##Authors) developed at UCSD for CSE 141L, with the purpose of executing three specific problems (the `problems*.txt` files contains the ARK instructions for these problems).
 
 ## Usage
 
