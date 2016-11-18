@@ -2,6 +2,10 @@
 
 `ark` is an assembler for [ARK](https://github.com/prkumar/ARK-Processor), an instruction set architecture [we](#authors) developed at UCSD for CSE 141L and designed with the purpose of executing three specific problems (the `problems` directory contains the ARK instruction files for each problem).
 
+**Note:** Currently, the assembler only generates machine code based on the ISA definition. We plan to implement a *true* assembler for ARK in the near future -- probably sometime after the quarter ends, as that would fall outside the scope of the course. 
+
+**Note:** Moreover,I believe that we may be able to draw out a more general Python package for creating assemblers and/or defining ISAs from this :metal:.
+
 ## Usage
 
 To run the assembler, type:
