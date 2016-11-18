@@ -4,7 +4,7 @@
 
 **Note:** Currently, the assembler only generates machine code based on the ISA definition. We plan to implement a *true* assembler for ARK in the near future -- probably sometime after the quarter ends, as that would fall outside the scope of the course. 
 
-**Note:** Moreover,I believe that we may be able to draw out a more general Python package for creating assemblers and/or defining ISAs from this :metal:.
+**Note:** Moreover, I believe that we may be able to draw out a more general Python package for creating assemblers and/or defining ISAs from this :metal:.
 
 ## Usage
 
