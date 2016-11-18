@@ -1,4 +1,4 @@
-# `ark`, the ARK Assembler
+# `ark`: the ARK Assembler
 
 `ark` is an assembler for [ARK](https://github.com/prkumar/ARK-Processor), an instruction set architecture [we](##Authors) developed at UCSD for CSE 141L, with the purpose of executing three specific problems (the `problems*.txt` files contains the ARK instructions for these problems).
 
@@ -9,11 +9,11 @@ To run the assembler, type:
 $ python -m ark
 ```
 
-The assembler has three modes, determined by the number of positional arguments given.
- 
 **Note:** The `-m` flags tells Python to execute `ark/__main__.py`, which contains the assembler code.
 
 **Note:** Because of Python’s import mechanism, the assembler will not work from within the `ark` directory.
+
+The assembler has three modes, determined by the number of positional arguments given.
 
 ### Start a Read-eval-print loop (REPL)
 
