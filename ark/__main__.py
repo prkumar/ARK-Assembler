@@ -3,6 +3,9 @@ ARK Assembler
 
 TODO: Move parser and lexer into classes.
 """
+from __future__ import absolute_import
+
+
 import os
 import sys
 
