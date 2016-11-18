@@ -3,11 +3,13 @@ ARK Assembler
 
 TODO: Move parser and lexer into classes.
 """
-import ark
 import os
 import sys
-import ply.lex as lex
-import ply.yacc as yacc
+
+import ark.isa as isa
+import ark.ply.lex as lex
+import ark.ply.yacc as yacc
+
 
 FILE_OUT = sys.stdout
 tokens = ('COMMAND', 'REGISTER', 'IMMEDIATE')
@@ -19,6 +21,7 @@ t_REGISTER = r'\$\w+'
 def assemble(opcode, *operands):
     """Write machine code to output file."""
     return "{}_{}".format(opcode, "".join(operands))
+
 
 def t_IMMEDIATE(t):
     r'(0b(0|1)+|0x([0-9]|[A-F])|-?\d+)'
@@ -51,16 +54,16 @@ lex.lex()
 
 
 def get_register_bits(bounds, register):
-    if not (bounds.start <= ark.REGISTERS[register] <= bounds.end):
+    if not (bounds.start <= isa.REGISTERS[register] <= bounds.end):
         raise Exception("Register {} is out of bounds for this instruction.".format(register))
-    before = '{0:b}'.format(ark.REGISTERS[register] - bounds.start)
+    before = '{0:b}'.format(isa.REGISTERS[register] - bounds.start)
     return ("0" * (int(bounds.bits) - len(before))) + before
 
 
 def find_opcode(instruction, *formats):
     for f in formats:
         try:
-            format_ = ark.FORMATS[f]
+            format_ = isa.FORMATS[f]
             return format_[instruction], format_
         except KeyError:
             continue
@@ -127,12 +130,18 @@ yacc.yacc()
 
 
 if __name__ == "__main__":
+    isa.build_isa()
 
     if len(sys.argv) <= 1:
         print("Starting the ARK interpreter... (Enter CTR + C to exit)")
         while True:
             try:
-                s = raw_input('>>> ')
+                try:
+                    # Python 2
+                    s = raw_input('>>> ')
+                except NameError:
+                    # Python 3
+                    s = input('>>> ')
             except (EOFError, KeyboardInterrupt):
                 print("\nGoodbye!")
                 break
