@@ -11,7 +11,7 @@ $ python -m ark
 
 **Note:** The `-m` flags tells Python to execute `ark/__main__.py`, which contains the assembler code.
 
-**Note:** Because of Python’s import mechanism, the assembler will not work from within the `ark` directory.
+**Note:** Because of Python’s import mechanism, running the assembler from within the `ark` directory will not work.
 
 The assembler has three modes, determined by the number of positional arguments given.
 
